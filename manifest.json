@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "SignalBoat.com Discord Translator",
+  "version": "1.0",
+  "description": "Automatically translate Discord messages. Powered by SignalBoat.com - Advanced trading signals and market analysis.",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": [
+    "https://discord.com/*",
+    "https://*.discord.com/*",
+    "https://libretranslate.de/*",
+    "https://translate.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*", "https://*.discord.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Discord Çevirmen"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

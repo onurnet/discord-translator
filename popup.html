@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 300px;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #2f3136;
+        color: white;
+        margin: 0;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #40444b;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 18px;
+        color: #5865f2;
+      }
+
+      .setting-group {
+        margin-bottom: 15px;
+      }
+
+      .setting-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #dcddde;
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #40444b;
+        transition: 0.4s;
+        border-radius: 24px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: '';
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #5865f2;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #40444b;
+        border-radius: 4px;
+        background: #40444b;
+        color: white;
+        font-size: 14px;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #5865f2;
+      }
+
+      .status {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .status.enabled {
+        background: #43b581;
+        color: white;
+      }
+
+      .status.disabled {
+        background: #f04747;
+        color: white;
+      }
+
+      .save-button {
+        width: 100%;
+        padding: 10px;
+        background: #5865f2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .save-button:hover {
+        background: #4752c4;
+      }
+
+      .save-button:active {
+        background: #3c45a5;
+      }
+
+      .footer {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px solid #40444b;
+        text-align: center;
+        font-size: 12px;
+        color: #72767d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🚢 SignalBoat.com Discord Translator</h1>
+      <div style="text-align: center; margin-top: 5px">
+        <a
+          href="https://signalboat.com"
+          target="_blank"
+          style="color: #5865f2; text-decoration: none; font-size: 11px"
+        >
+          Advanced Trading Signals & Market Analysis
+        </a>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <label for="enabled">Automatic Translation</label>
+      <label class="toggle-switch">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-group">
+      <label for="targetLanguage">Target Language</label>
+      <select id="targetLanguage">
+        <option value="en">English</option>
+        <option value="tr">Turkish</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="it">Italian</option>
+        <option value="ru">Russian</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="zh">Chinese</option>
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <label for="sourceLanguage">Source Language</label>
+      <select id="sourceLanguage">
+        <option value="auto">Auto Detect</option>
+        <option value="en">English</option>
+        <option value="tr">Turkish</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="it">Italian</option>
+        <option value="ru">Russian</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="zh">Chinese</option>
+      </select>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="setting-group">
+      <button id="saveButton" class="save-button">
+        💾 Save Settings & Refresh Page
+      </button>
+    </div>
+
+    <div class="footer">
+      Automatically translates Discord messages
+      <br />
+      <a
+        href="https://signalboat.com"
+        target="_blank"
+        style="color: #5865f2; text-decoration: none; font-size: 11px"
+      >
+        🚢 Powered by SignalBoat.com
+      </a>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
